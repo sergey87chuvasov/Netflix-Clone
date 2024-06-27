@@ -25,7 +25,7 @@ const TitleCards = ({ title, category }) => {
     fetch(
       `https://api.themoviedb.org/3/movie/${
         category ? category : 'now_playing'
-      } ? language=en-US&page=1`,
+      }?language=en-US&page=1`,
       options
     )
       .then((response) => response.json())
