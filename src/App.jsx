@@ -6,19 +6,25 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect } from 'react';
 import { auth } from './firebase';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   const navigate = useNavigate();
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        console.log('log in');
+        // console.log('log in');
+        navigate('/');
       } else {
-        console.log('log out');
+        // console.log('log out');
+        navigate('/login');
       }
     });
   }, []);
   return (
     <div>
+      <ToastContainer theme='dark' />
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/login' element={<Login />}></Route>
